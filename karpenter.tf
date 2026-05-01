@@ -51,7 +51,7 @@ data "kubectl_path_documents" "manifests" {
   pattern = "${path.module}/templates/karpenter.yaml"
   vars = {
     alias_version = "v20260304"
-    cluster_name  = try(module.eks.cluster_name, "")
+    cluster_name  = var.cluster_name
   }
 }
 
