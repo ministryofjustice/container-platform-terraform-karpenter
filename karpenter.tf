@@ -47,16 +47,19 @@ resource "helm_release" "karpenter" {
 }
 
 
-data "kubectl_path_documents" "manifests" {
-  pattern = "${path.module}/templates/karpenter.yaml"
-  vars = {
-    alias_version = "v20260304"
-    cluster_name  = var.cluster_name
-  }
+locals {
+  karpenter_manifests = [
+    for doc in split("---", templatefile("${path.module}/templates/karpenter.yaml", {
+      alias_version = "v20260304"
+      cluster_name  = var.cluster_name
+    }))
+    : trimspace(doc)
+    if trimspace(doc) != ""
+  ]
 }
 
 resource "kubectl_manifest" "deploy_manifest" {
-  for_each  = toset(data.kubectl_path_documents.manifests.documents)
+  for_each  = { for i, v in local.karpenter_manifests : tostring(i) => v }
   yaml_body = each.value
 
   depends_on = [
