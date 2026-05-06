@@ -73,7 +73,10 @@ locals {
 }
 
 resource "kubectl_manifest" "deploy_manifest" {
-  for_each  = { for i, v in local.karpenter_manifests : tostring(i) => v }
+  for_each = {
+    "nodepool"      = local.karpenter_manifests[0]
+    "ec2nodeclass"  = local.karpenter_manifests[1]
+  }
   yaml_body = each.value
 
   depends_on = [
