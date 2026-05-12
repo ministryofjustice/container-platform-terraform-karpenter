@@ -20,6 +20,10 @@ module "karpenter" {
 }
 ```
 
+## Karpenter Configuration
+
+This will contain info on how to configure 
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
