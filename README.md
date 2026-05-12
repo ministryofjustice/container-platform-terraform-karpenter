@@ -21,3 +21,5 @@ module "karpenter" {
 ```
 
 <!-- BEGIN_TF_DOCS -->
+
+<!-- END_TF_DOCS -->
