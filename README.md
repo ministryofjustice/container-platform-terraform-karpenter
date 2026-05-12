@@ -1,44 +1,23 @@
-# Container Platform Terraform Module Template
+# Container Platform Terraform Karpenter Module
 
-[![Ministry of Justice Repository Compliance Badge](https://github-community.service.justice.gov.uk/repository-standards/api/container-platform-terraform-template/badge)](https://github-community.service.justice.gov.uk/repository-standards/container-platform-terraform-template)
+[![Ministry of Justice Repository Compliance Badge](https://github-community.service.justice.gov.uk/repository-standards/api/container-platform-terraform-karpenter/badge)](https://github-community.service.justice.gov.uk/repository-standards/container-platform-terraform-karpenter)
 
-A template repository for building Terraform modules for the Container Platform.
+
+[![Releases](https://img.shields.io/github/release/ministryofjustice/container-platform-terraform-karpenter/all.svg?style=flat-square)](https://github.com/ministryofjustice/container-platform-terraform-karpenter/releases)
+
+This is the Karpenter terraform module for the Container Platform
 
 ## Usage
 
-Click **"Use this template"** to create a new Terraform module repository.
 
-## Structure
+```hcl
+module "karpenter" {
+  source  = "github.com/ministryofjustice/container-platform-terraform-karpenter?ref=1.0.0"
 
+  cluster_name = local.cluster_name
+  cluster_endpoint = module.eks[0].cluster_endpoint
+  k8s_version = local.environment_configuration.eks_cluster_version
+}
 ```
-├── main.tf           # Main module resources
-├── variables.tf      # Input variables
-├── outputs.tf        # Output values
-├── versions.tf       # Provider and Terraform version constraints
-└── README.md
-```
 
-## After Creating Your Module
-
-1. Update this README with your module's documentation
-2. Update `CODEOWNERS` with the appropriate team
-3. Review `dependabot.yml` configuration
-4. Update the compliance badge URL with your repository name
-5. Add your Terraform resources to `main.tf`
-6. Define input variables in `variables.tf`
-7. Define outputs in `outputs.tf`
-8. Set version constraints in `versions.tf`
-
-## Requirements
-
-| Name | Version |
-|------|---------|
-| terraform | >= 1.0 |
-
-## Repository Standards
-
-This repository follows the [Ministry of Justice GitHub Repository Standards](https://github-community.service.justice.gov.uk/repository-standards/guidance).
-
-## License
-
-[MIT License](LICENSE)
+<!-- BEGIN_TF_DOCS -->
