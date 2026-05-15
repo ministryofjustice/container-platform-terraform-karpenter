@@ -64,8 +64,6 @@ This will contain info on how to configure
 | <a name="input_k8s_version"></a> [k8s\_version](#input\_k8s\_version) | The Kubernetes version of the cluster, e.g. 1.35 | `string` | `""` | no |
 | <a name="input_max_pods_per_node"></a> [max\_pods\_per\_node](#input\_max\_pods\_per\_node) | Maximum number of pods that will be allowed to run on a node | `number` | `110` | no |
 
-
-
 ## Outputs
 
 No outputs.
