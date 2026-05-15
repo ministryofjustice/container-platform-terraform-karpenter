@@ -10,5 +10,6 @@ module "example_cluster_autoscaler" {
   cluster_name = "cluster_name"
   cluster_endpoint = "cluster_endpoint"
   k8s_version = "1.35"
+  max_pods_per_node = 110
 }
 

@@ -66,6 +66,7 @@ locals {
     for doc in split("---", templatefile("${path.module}/templates/karpenter.yaml", {
       alias_version = data.external.karpenter_alias_version.result.alias_version
       cluster_name  = var.cluster_name
+      max_pods_per_node = var.max_pods_per_node
     }))
     : trimspace(doc)
     if trimspace(doc) != ""

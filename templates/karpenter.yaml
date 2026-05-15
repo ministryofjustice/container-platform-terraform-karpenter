@@ -37,6 +37,8 @@ kind: EC2NodeClass
 metadata:
   name: cp-karpenter-ec2nodeclass
 spec:
+  kubelet:  
+    maxPods: ${max_pods_per_node}
   role: "${cluster_name}"
   amiSelectorTerms:
     - alias: "al2023@${alias_version}"
