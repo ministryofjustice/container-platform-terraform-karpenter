@@ -17,7 +17,7 @@ module "karpenter" {
   cluster_name = local.cluster_name
   cluster_endpoint = module.eks[0].cluster_endpoint
   k8s_version = local.environment_configuration.eks_cluster_version
-  input_max_pods_per_node = 100
+  input_max_pods_per_node = 110
 }
 ```
 
