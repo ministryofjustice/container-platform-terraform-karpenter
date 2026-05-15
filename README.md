@@ -17,6 +17,7 @@ module "karpenter" {
   cluster_name = local.cluster_name
   cluster_endpoint = module.eks[0].cluster_endpoint
   k8s_version = local.environment_configuration.eks_cluster_version
+  input_max_pods_per_node = 100
 }
 ```
 
@@ -61,6 +62,9 @@ This will contain info on how to configure
 | <a name="input_cluster_endpoint"></a> [cluster\_endpoint](#input\_cluster\_endpoint) | The API endpoint of the cluster | `string` | `""` | no |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | The name of the container platform cluster, e.g. live, cp-xxxx-xxxx | `string` | `""` | no |
 | <a name="input_k8s_version"></a> [k8s\_version](#input\_k8s\_version) | The Kubernetes version of the cluster, e.g. 1.35 | `string` | `""` | no |
+| <a name="input_max_pods_per_node"></a> [max\_pods\_per\_node](#input\_max\_pods\_per\_node) | Maximum number of pods that will be allowed to run on a node | `number` | `110` | no |
+
+
 
 ## Outputs
 
