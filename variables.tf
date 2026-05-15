@@ -18,6 +18,6 @@ variable "k8s_version" {
 
 variable "max_pods_per_node" {
   default     = 110
-  description = Maximum number of pods that will be allowed to run on a node"
+  description = "Maximum number of pods that will be allowed to run on a node"
   type        = number
 }
